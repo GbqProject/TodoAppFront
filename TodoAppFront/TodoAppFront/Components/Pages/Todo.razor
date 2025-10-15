@@ -1,15 +1,18 @@
 ﻿@page "/todo"
-
-// Injecting HttpClient directly (for basic usage)
-    @inject HttpClient Http
+@inject HttpClient Http
 <h3>Tareas</h3>
 <p>Módulo para la gestión de tareas</p>
 
-@code {
-    // TodoAppFront.Components.Modules.Task.Domain.Task [] data;
+<TodoAppFront.Components.Modules.Task.Components.TaskList Tasks="tasksData"></TodoAppFront.Components.Modules.Task.Components.TaskList>
 
-    // protected override async Task OnInitializedAsync()
-    // {
-    //     data = await Http.GetJsonAsync<Employee[]>("/api/Employee/Index");
-    // }
+
+@code {
+
+    TodoAppFront.Components.Modules.Task.Domain.Task[] tasksData = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        tasksData = await Http.GetFromJsonAsync<TodoAppFront.Components.Modules.Task.Domain.Task[]>("https://localhost:7117/api/Tasks");
+        System.Diagnostics.Debug.WriteLine("Here's the data---->");
+    }
 }

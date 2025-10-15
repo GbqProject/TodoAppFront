@@ -1,0 +1,36 @@
+﻿<button type="button" class="btn btn-primary">Añadir una tarea</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Prioridad</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Archivo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Tasks.Length > 0)
+        {
+            @foreach (Domain.Task task in Tasks)
+            {
+                <tr>
+                    <th scope="row">@task.Id</th>
+                    <td>@task.Name</td>
+                    <td>@task.Description</td>
+                    <td>@task.priority</td>
+                    <td>@task.status</td>
+                    <td>@task.base64pdf</td>
+                </tr>
+
+            }
+            
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public TodoAppFront.Components.Modules.Task.Domain.Task[] Tasks { get; set; } = [];
+}
