@@ -6,13 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// In Program.cs
+//// In Program.cs
 builder.Services.AddHttpClient();
 // Or for a named client with a base address:
-builder.Services.AddHttpClient("TodoApi", client =>
-{
-    client.BaseAddress = new Uri("https://localhost:7117/"); // Replace with your API base address
-});
+//builder.Services.AddHttpClient("TodoApi", client =>
+//{
+//    client.BaseAddress = new Uri("https://localhost:7117/"); // Replace with your API base address
+//});
 
 var app = builder.Build();
 
